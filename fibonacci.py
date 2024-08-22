@@ -1,12 +1,15 @@
-import math
 import time
-from pprint import pprint
 import numpy as np
 
-M = [
-    [1, 1], 
-    [1, 0]
-]
+"""
+Calculate the nth Fibonacci number using the matrix multiplication method.
+As it turns out,
+| 1 1 | ^ n 
+| 1 0 |  
+gives us the nth Fibonacci number in its upper left corner. 
+Instead of full matrix multiplcation, I diagonalize the matrix.
+This way, raising it to the power of n is as simple as two matrix multiplications, and 2 * n * log_2(n) scalar multiplies
+"""
 
 root5 = np.sqrt(5)
 
@@ -35,6 +38,4 @@ for i in range(1<<30):
     start = time.time()
     f = fibonnaci(i)
     end = time.time()
-    if (end-start) > .999999:
-        print(f"Failed at the {i}th Fibonacci number")
-        break
+    print(end-start)
